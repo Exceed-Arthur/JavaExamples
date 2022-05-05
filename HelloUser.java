@@ -6,7 +6,7 @@
 
 import java.util.Scanner;  // Import the Scanner class
 import java.util.Arrays;
-
+import java.lang.*;
 public class HelloUser {
 	public static void main(String[] args) {
 		String userName = GrabName();
@@ -19,17 +19,33 @@ public class HelloUser {
 		System.out.println("Please type your name again and hit enter.");
 		String userNameConfirm = scan_object_nameRequest.nextLine(); // Read user input again to confirm
 		if (userName.equalsIgnoreCase(userNameConfirm)) {
-			if (userName.contains(" ") != false) {
+			if (userName.contains(" ") == false) {
 			userName = (userName.toLowerCase()).substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
 			String ConfirmationResponse = String.format("Thank you! Your name is: %s", userName);
 			System.out.println(ConfirmationResponse);
-			return userNameConfirm;
+			return userNameConfirm;}
 			else {
 				String[] partsOfName_pre = (userName.replaceAll("  ", " ")).replaceAll("  ", " ").split(" ");
 				String[] partsofName_post;
-				for (i=0; i < (partsOfName_pre.length()); i++;) {
-					
+				int i;
+				int end_pt = partsOfName_pre.length;
+				List<String> name_component_list = new ArrayList<String>(); // This will allow us to add items to a new list of strings
+				for (i=0; i < end_pt; i++) {
+					String name_component;
+					name_component = (partsOfName_pre[i].toLowerCase()).substring(0, 1).toUpperCase() + (partsOfName_pre[i].toLowerCase()).substring(1);
+					System.out.println(name_component);
+					name_component_list.add(name_component);
 				}
+				String FinalNameString;
+				int j;
+				int k = name_component_list.size();
+				StringBuilder string_jk = new StringBuilder("");
+				for (j=0; j < k; i++) {
+					String string_jk1 = FinalNameString;
+					String string_jk2 = name_component_list[j];
+					string_jk.append(string_jk2);
+				}
+				return string_jk;
 			}
 		}
 		else {
