@@ -40,7 +40,7 @@ public class HelloUser {
 				int j;
 				int k = name_component_list.size();
 				StringBuilder string_jk = new StringBuilder("");
-				for (j=0; j < k; i++) {
+				for (j=0; j < k; i++) { // ERROR HERE ("i" instead of "j" iterating causes infinite iteration and memory heap error)
 					String string_jk1 = FinalNameString;
 					String string_jk2 = name_component_list[j];
 					string_jk.append(string_jk2);
