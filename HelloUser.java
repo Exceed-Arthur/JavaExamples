@@ -6,6 +6,8 @@
 
 import java.util.Scanner;  // Import the Scanner class
 import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList; // import the ArrayList class
 import java.lang.*;
 public class HelloUser {
 	public static void main(String[] args) {
@@ -40,12 +42,11 @@ public class HelloUser {
 				int j;
 				int k = name_component_list.size();
 				StringBuilder string_jk = new StringBuilder("");
-				for (j=0; j < k; i++) { // ERROR HERE ("i" instead of "j" iterating causes infinite iteration and memory heap error)
-					String string_jk1 = FinalNameString;
-					String string_jk2 = name_component_list[j];
+				for (j=0; j < k; j++) {
+					String string_jk2 = name_component_list.get(j);
 					string_jk.append(string_jk2);
 				}
-				return string_jk;
+				return string_jk.toString();
 			}
 		}
 		else {
