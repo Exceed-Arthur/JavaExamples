@@ -1,17 +1,14 @@
 //. Concordia Computer Science Department
 //  Arthur Lee Martinez, May 5 2022
 //  Task : Write a Java program to print 'Hello, {User}'
-		
-
-
-import java.util.Scanner;  // Import the Scanner class
+import java.util.Scanner;  // Import Scanner class
 import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList; // import the ArrayList class
+import java.util.ArrayList; // import ArrayList class
 import java.lang.*;
 public class HelloUser {
 	public static void main(String[] args) {
-		String userName = GrabName();
+		String userName = GrabName().trim();
 		System.out.println(String.format("Hello, %s", userName));
 	}
 	private static String GrabName() {
@@ -35,7 +32,6 @@ public class HelloUser {
 				for (i=0; i < end_pt; i++) {
 					String name_component;
 					name_component = (partsOfName_pre[i].toLowerCase()).substring(0, 1).toUpperCase() + (partsOfName_pre[i].toLowerCase()).substring(1);
-					System.out.println(name_component);
 					name_component_list.add(name_component);
 				}
 				String FinalNameString;
@@ -43,7 +39,7 @@ public class HelloUser {
 				int k = name_component_list.size();
 				StringBuilder string_jk = new StringBuilder("");
 				for (j=0; j < k; j++) {
-					String string_jk2 = name_component_list.get(j);
+					String string_jk2 = name_component_list.get(j) + " ";
 					string_jk.append(string_jk2);
 				}
 				return string_jk.toString();
