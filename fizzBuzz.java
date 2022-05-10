@@ -2,7 +2,7 @@
 public class fizzBuzz {
    public static void main(String args[]) {
       int i;
-      for (i=1; i<100; i++) {
+      for (i=1; i<101; i++) {
             String response;
             response = fizz(i);
             System.out.println(response);
