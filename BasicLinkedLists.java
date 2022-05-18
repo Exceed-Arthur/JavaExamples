@@ -1,7 +1,4 @@
 import java.util.*;
-import java.util.Scanner;
-import java.util.Collections;
-import java.util.function.Supplier;
 import java.lang.Math.*;
 
 class LinkedLists {
