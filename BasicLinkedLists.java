@@ -1,6 +1,3 @@
-package com.exceed.io.JavaEx;
-
-
 import java.util.*;
 import java.util.Scanner;
 import java.util.Collections;
@@ -11,11 +8,11 @@ import java.lang.Math.*;
 
 class LinkedLists {
 
-    public static void Main(String[] args) {
+    public static void main(String[] args) {
         Node head = new Node(RandomBig());
         List<Node> LinkedListPre = new ArrayList<Node>(); 
         LinkedListPre.add(head);
-        int Big = RandomBig();
+        Double Big = RandomBig();
         int i;
         Node current = head;
         for (i=0; i < Big; i++) {
@@ -27,7 +24,7 @@ class LinkedLists {
   
 
         int length_of_linked_list = LinkedListPre.size();
-        int head_data = head.data;
+        Double head_data = head.data;
         System.out.println(String.format("Successfully created linked list with %d nodes.\nThe root contains the data -> int data:  %d", length_of_linked_list, head_data));
     }
 
@@ -45,34 +42,36 @@ class LinkedLists {
     
     public static List GenerateRandomLinkedList() {
         List<Node> Nodes = new ArrayList<Node>();
-        int iterations = RandomBig() + 1;
+        int iterations = (int) Math.round(RandomBig()) + 1;
         int i;
         for (i=0; i < iterations; i++) {
             Nodes.add(CreateNodeRandom());
         }
         return Nodes;
     }
-    public static int RandomBig() {
+    public static Double RandomBig() {
         Double random_1 = Math.random();
-        int oneth = Math.floor(random_1 * 100 + 1 - random_1);
+        Double oneth = Math.floor(random_1 * 100.00 + 1.00 - random_1);
         return oneth;
     }
-    public static Node CreateNodeRandom() {
-        return Node(RandomBig());
+    private static Node CreateNodeRandom() {
+        Node node = new Node(RandomBig());
+        return node;
+    }
+    
+    public static class Node {
+        Double data;
+        public Node(Double data) {
+            data = data;
+        }
+        Node next;
+        public void setData(Double data) {
+            data = data;
+        }
+        public Double getData() {
+            return data;
+        }
     }
     
 }
 
-class Node {
-    int data;
-    public Node(int data) {
-        data = data;
-    }
-    Node next;
-    public void setData(int data) {
-        data = data;
-    }
-    public int getData() {
-        return data;
-    }
-}
