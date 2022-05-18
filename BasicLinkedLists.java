@@ -15,7 +15,7 @@ class LinkedLists {
         int i = 0;
         Node current = head;
         
-        System.out.println(String.format("\nInitializing LinkedList Tutorial Demo...\n_____________________________________________\n\n%d. Created Root Node with Data: %.2f", (i+1), random1));
+        System.out.println(String.format("\nInitializing LinkedList Tutorial Demo...\n________________________________________________________________\n\n%d. Created Root Node with Data: %.2f", (i+1), random1));
         for (i=0; i < random1; i++) {
             int pre_int = (int) Math.round(Math.floor(Math.random() * 99999.99));
             String Name = String.valueOf(pre_int);
@@ -24,11 +24,11 @@ class LinkedLists {
             current.next = Node2;
             current = Node2;
             LinkedListPre.add(Node2);
-            System.out.println(String.format("\n%d. Created Node %s -> Current Data: %.2f", (i+2), Node2, random));
+            System.out.println(String.format("%d. Created Node %s -> Current Data: %.2f", (i+2), Node2, random));
         }
         int length_of_linked_list = LinkedListPre.size();
         Double head_data = head.data;
-        System.out.println(String.format("Successfully created linked list with %d nodes.\nThe root contains the data -> int data:  %.2f", length_of_linked_list, head_data));
+        System.out.println(String.format("\n\nSuccessfully created linked list with %d nodes.\nThe root contains the data -> int data:  %.2f", length_of_linked_list, head_data));
         int ij;
         System.out.println("\nInitializing Graph Traversal!\n_______________________________________________\n");
         for (ij=0; ij<length_of_linked_list; ij++) {
