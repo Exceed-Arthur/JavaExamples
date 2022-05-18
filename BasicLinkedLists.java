@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import java.lang.Math.*;
 
 class LinkedLists {
+
     public static void main(String[] args) {
         int pre_int1 = (int) Math.round(Math.floor(Math.random() * 99999.99));
         Double random1 = RandomBig();
@@ -13,7 +14,8 @@ class LinkedLists {
         LinkedListPre.add(head);
         int i = 0;
         Node current = head;
-        System.out.println(String.format("\n%d. Initializing LinkedList Tutorial Demo...\n_____________________________________________\n\nCreated Root Node with Data: %.2f", (i+1), random1));
+        
+        System.out.println(String.format("\nInitializing LinkedList Tutorial Demo...\n_____________________________________________\n\n%d. Created Root Node with Data: %.2f", (i+1), random1));
         for (i=0; i < random1; i++) {
             int pre_int = (int) Math.round(Math.floor(Math.random() * 99999.99));
             String Name = String.valueOf(pre_int);
@@ -22,7 +24,7 @@ class LinkedLists {
             current.next = Node2;
             current = Node2;
             LinkedListPre.add(Node2);
-            System.out.println(String.format("\n%d. Created Node %s -> Current Data: %.2f", (i+1), Node2, random));
+            System.out.println(String.format("\n%d. Created Node %s -> Current Data: %.2f", (i+2), Node2, random));
         }
         int length_of_linked_list = LinkedListPre.size();
         Double head_data = head.data;
@@ -59,13 +61,11 @@ class LinkedLists {
         }
         return Nodes;
     }
-    
     public static Double RandomBig() {
         Double random_1 = Math.random();
         Double oneth = Math.floor(random_1 * 100.00 + 1.00 - random_1);
         return oneth;
     }
-    
     private static Node CreateNodeRandom() {
         int pre_int = (int) Math.round(Math.floor(Math.random() * 99999.99));
         String Name = String.valueOf(pre_int);
