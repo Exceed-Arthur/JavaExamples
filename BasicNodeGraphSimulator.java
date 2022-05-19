@@ -29,6 +29,18 @@ class NodeGraph {
       Double data = RandomDouble(); // Instantiate random decimal number to put in data property
       List<Node> NodeList = new ArrayList<Node>(); // Create a new list containing our custom Node Object type
       List<Node> adjacent_nodes = NodeList;
+      public Double getData() {
+        return this.data;
+      }
+      public void setData(Double data) {
+        this.data = data;
+      }
+      public void addAdjacents(Node adjacent) {
+        this.adjacent_nodes.add(adjacent);
+      }
+      public List<Node> getAdjacents() {
+        return this.adjacent_nodes;
+      }
       
     } // Constructor allows for data to be added on instantiation automatically
   
@@ -86,8 +98,9 @@ class NodeGraph {
           System.out.println(book);
           
           if (book) { // Some Nodes could have up to 25 Adjacent Nodes (that is our maximum RandomInt)
-            currentNode.adjacent_nodes.add(OriginalNodes.get(RandomInt(OriginalNodes.size()-1))); // Add it to our list of saved nodes in our instance variable
-            System.out.println(String.format("Adding (%s=%.2f) to Node %s", OriginalNodes.get(RandomInt(OriginalNodes.size()-1)), currentNode));
+            currentNode.addAdjacents(OriginalNodes.get(RandomInt(OriginalNodes.size()))); // Add it to our list of saved nodes in our instance variable
+            Node RandomNode = OriginalNodes.get(RandomInt(OriginalNodes.size()));
+            System.out.println(String.format("Adding (%s=%.2f) to Node %s", RandomNode, RandomNode.data, currentNode));
           }
         }
       }
