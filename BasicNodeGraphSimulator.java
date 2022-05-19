@@ -25,7 +25,6 @@ class NodeGraph {
     }
   }
   static class Node {
-    
       Double data = RandomDouble(); // Instantiate random decimal number to put in data property
       List<Node> NodeList = new ArrayList<Node>(); // Create a new list containing our custom Node Object type
       List<Node> adjacent_nodes = NodeList;
@@ -41,7 +40,6 @@ class NodeGraph {
       public List<Node> getAdjacents() {
         return this.adjacent_nodes;
       }
-      
     } // Constructor allows for data to be added on instantiation automatically
   
   
@@ -69,7 +67,6 @@ class NodeGraph {
 
   private static boolean RandomBool() {
     Double answer = (Math.random()*1.00);
-    System.out.println(answer);
     if (answer > 0.5)  {
       return true; // Returns True half the time (ideally/theoretically)
     }
@@ -90,12 +87,9 @@ class NodeGraph {
       int iterations1 = RandomInt(OriginalNodes.size()); // Get new random integer to iterate through
       int j; // create iteration value to loop with
       boolean tool = RandomBool();
-      System.out.println(String.format("tool = %b", tool));
-      if (tool) { // Half the nodes SHOULD be singleton(ish) instances
-      System.out.println(tool);
+  
         for (j=0; j < iterations1-1; j++) {
           boolean book = RandomBool();
-          System.out.println(book);
           
           if (book) { // Some Nodes could have up to 25 Adjacent Nodes (that is our maximum RandomInt)
             currentNode.addAdjacents(OriginalNodes.get(RandomInt(OriginalNodes.size()))); // Add it to our list of saved nodes in our instance variable
@@ -103,12 +97,9 @@ class NodeGraph {
             System.out.println(String.format("Adding (%s=%.2f) to Node %s", RandomNode, RandomNode.data, currentNode));
           }
         }
-      }
       } 
-    
-  return OriginalNodes;
-    
-  }
+    return OriginalNodes;
+    }
   
   
 }
