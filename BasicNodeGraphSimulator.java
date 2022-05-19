@@ -14,16 +14,17 @@ class NodeGraph {
       List<Node> adjacents = null;
       adjacents = currentNode.adjacent_nodes; // Get instance variable property of adjacent nodes
       String NodeListString = null; // Get String version of adjacent nodes list, default to null
-      
-      if (adjacents != null) {
+      if (adjacents.size() > 0) {
         NodeListString = Arrays.toString(adjacents.toArray());  // Get String version of adjacent nodes list
         System.out.println(String.format("\nCurrent Node -<- (%s=%.2f) --- Adjacent Nodes -> (%s)\n", currentNode, currentNode.data, NodeListString));
       }
       else {
+        if (Math.random() > 0.50) {
         System.out.println(String.format("\nCurrent Node -<- (%s=%.2f) --- Adjacent Nodes -> Null/None", currentNode, currentNode.data));
-      }
+      }} //Half of singleton nodes are deleted to save memory/sapce
     }
   }
+  
   static class Node {
       Double data = RandomDouble(); // Instantiate random decimal number to put in data property
       List<Node> NodeList = new ArrayList<Node>(); // Create a new list containing our custom Node Object type
@@ -45,7 +46,7 @@ class NodeGraph {
   
   
   private static Double RandomDouble() {
-    Double trouble = (Math.random() * 1000.00);
+    Double trouble = (Math.random() * 100.00);
     return trouble;
   }
   
@@ -87,19 +88,14 @@ class NodeGraph {
       int iterations1 = RandomInt(OriginalNodes.size()); // Get new random integer to iterate through
       int j; // create iteration value to loop with
       boolean tool = RandomBool();
-  
         for (j=0; j < iterations1-1; j++) {
-          boolean book = RandomBool();
-          
-          if (book) { // Some Nodes could have up to 25 Adjacent Nodes (that is our maximum RandomInt)
-            currentNode.addAdjacents(OriginalNodes.get(RandomInt(OriginalNodes.size()))); // Add it to our list of saved nodes in our instance variable
-            Node RandomNode = OriginalNodes.get(RandomInt(OriginalNodes.size()));
-            System.out.println(String.format("Adding (%s=%.2f) to Node %s", RandomNode, RandomNode.data, currentNode));
+          currentNode.addAdjacents(OriginalNodes.get(RandomInt(OriginalNodes.size()))); // Add it to our list of saved nodes in our instance variable
+          Node RandomNode = OriginalNodes.get(RandomInt(OriginalNodes.size()));
+          System.out.println(String.format("Adding (%s=%.2f) to Node %s", RandomNode, RandomNode.data, currentNode));
           }
         }
-      } 
     return OriginalNodes;
     }
-  
-  
 }
+  
+  
