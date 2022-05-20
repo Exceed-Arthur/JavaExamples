@@ -3,26 +3,37 @@ import java.util.function.Supplier;
 import java.util.Arrays;
 class NodeGraph {
   public static void main(String[] args) {
-    ArrayList<Node> NodeList = RandomNodeList(); // Get random list of nodes to be altered with arbitrary connections
     
-    NodeList = ArbitrarilyConnectNodes(NodeList); // Arbitarily connect nodes with each other
-    int NodeListLength = NodeList.size(); // Get length of Node List
-    System.out.println(String.format("Node List size: %d", NodeListLength));
-    int i; // Instantiate variable to loop with
-    for (i=0; i<NodeListLength; i++) {
-      Node currentNode = NodeList.get(i); // Get current node that we are iterating on
-      List<Node> adjacents = null;
-      adjacents = currentNode.adjacent_nodes; // Get instance variable property of adjacent nodes
-      String NodeListString = null; // Get String version of adjacent nodes list, default to null
-      if (adjacents.size() > 0) {
-        NodeListString = Arrays.toString(adjacents.toArray());  // Get String version of adjacent nodes list
-        System.out.println(String.format("\nCurrent Node -<- (%s=%.2f) --- Adjacent Nodes -> (%s)\n", currentNode, currentNode.data, NodeListString));
-      }
-      else {
-        if (Math.random() > 0.50) {
-        System.out.println(String.format("\nCurrent Node -<- (%s=%.2f) --- Adjacent Nodes -> Null/None", currentNode, currentNode.data));
-      }} //Half of singleton nodes are deleted to save memory/sapce
+
+  }
+  
+  static class Graph {
+    public Graph() {
+      ArrayList<Node> NodeList = RandomNodeList(); // Get random list of nodes to be altered with arbitrary connections
+      NodeList = ArbitrarilyConnectNodes(NodeList); // Arbitarily connect nodes with each other
+      int NodeListLength = NodeList.size(); // Get length of Node List
+      System.out.println(String.format("Node List size: %d", NodeListLength));
+      int i; // Instantiate variable to loop with
+      for (i=0; i<NodeListLength; i++) {
+        Collections.shuffle(NodeList); // Randomize list a bit
+        Node currentNode = NodeList.get(i); // Get current node that we are iterating on
+        List<Node> adjacents = null;
+        adjacents = currentNode.adjacent_nodes; // Get instance variable property of adjacent nodes
+        String NodeListString = null; // Get String version of adjacent nodes list, default to null
+        if (adjacents.size() > 0) {
+          NodeListString = Arrays.toString(adjacents.toArray());  // Get String version of adjacent nodes list
+          System.out.println(String.format("\nCurrent Node -<- (%s=%.2f) --- Adjacent Nodes -> (%s)\n", currentNode, currentNode.data, NodeListString));
+        }
+        else {
+          if (Math.random() > 0.50) {
+          System.out.println(String.format("\nCurrent Node -<- (%s=%.2f) --- Adjacent Nodes -> Null/None", currentNode, currentNode.data));
+            }
+          } //Half of singleton nodes are deleted to save memory/sapce
+        }
+        int random_node_index = RandomInt(NodeList.size());
+        Node chosen_node = NodeList.get(random_node_index);
     }
+      
   }
   
   static class Node {
