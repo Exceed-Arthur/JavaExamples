@@ -30,17 +30,12 @@ class NodeGraph {
           System.out.println(String.format("\nCurrent Node -<- (%s=%.2f) --- Adjacent Nodes -> (%s)\n", currentNode, currentNode.data, NodeListString));
         }
         else {
-
           System.out.println(String.format("\nCurrent Node -<- (%s=%.2f) --- Adjacent Nodes -> Null/None", currentNode, currentNode.data));
-      
           } //Half of singleton nodes are deleted to save memory/sapce
       }
-      
       int random_node_index = RandomInt(NodeList.size());
-      
       Node chosen_node = NodeList.get(random_node_index);
       System.out.println(String.format("Queue size line 66: %d", CountNodes(chosen_node)));
-
     }
       
   }
