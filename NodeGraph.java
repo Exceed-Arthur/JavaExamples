@@ -1,4 +1,6 @@
+
 import java.util.*;
+
 import java.util.Arrays;
 
 class NodeGraph {
@@ -30,12 +32,17 @@ class NodeGraph {
           System.out.println(String.format("\nCurrent Node -<- (%s=%.2f) --- Adjacent Nodes -> (%s)\n", currentNode, currentNode.data, NodeListString));
         }
         else {
+
           System.out.println(String.format("\nCurrent Node -<- (%s=%.2f) --- Adjacent Nodes -> Null/None", currentNode, currentNode.data));
+      
           } //Half of singleton nodes are deleted to save memory/sapce
       }
+      
       int random_node_index = RandomInt(NodeList.size());
+      
       Node chosen_node = NodeList.get(random_node_index);
       System.out.println(String.format("Queue size line 66: %d", CountNodes(chosen_node)));
+
     }
       
   }
@@ -43,8 +50,10 @@ class NodeGraph {
   private static int CountNodes(Node head) {
       Queue<Node> queue = new LinkedList<>();
       queue.add(head);
+      
       int counter = 0;
       List<Node> already_added = new ArrayList<>();
+      
       while (queue.size() > 0) {
         Node currentNode = queue.peek();
         queue.remove();
@@ -56,14 +65,15 @@ class NodeGraph {
           for (z=0; z<currentNode.adjacent_nodes.size(); z++) {
             if (!already_added.contains(currentNode.adjacent_nodes.get(z))) {
               queue.add(currentNode.adjacent_nodes.get(z));
-            }
           }
+        }
         }
         else if (!already_added.contains(currentNode)) {
           System.out.println(currentNode);
           counter++;
           already_added.add(currentNode);
         }
+
       }
       return counter++;
   }
@@ -109,24 +119,14 @@ class NodeGraph {
     }
     return NodeList;
   }
-
-  private static boolean RandomBool() {
-    Double answer = (Math.random()*1.00);
-    if (answer > 0.5)  {
-      return true; // Returns True half the time (ideally/theoretically)
-    }
-    else {
-    return false;
-  }
-  }
-
-  
+	
   private static ArrayList<Node> ArbitrarilyConnectNodes(ArrayList<Node> OriginalNodes) {
     System.out.println("\nConnecting nodes in a random fashion so we can traverse the list programatically.\n");
     int maxVal = OriginalNodes.size();
     int iterations = RandomInt(maxVal); // Get new random integer to iterate through (with maximum at size of node list)
     int i; // create iteration value to loop with
     for (i=0; (i<iterations); i++) {
+      
       Node currentNode = OriginalNodes.get(i); // Get current instance of our custom node class with our index
       System.out.println(String.format("Current Node: %s", currentNode));
       int iterations1 = RandomInt(OriginalNodes.size()); // Get new random integer to iterate through
