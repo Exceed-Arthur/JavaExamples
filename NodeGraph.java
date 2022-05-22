@@ -36,12 +36,12 @@ class NodeGraph {
       int random_node_index = RandomInt(NodeList.size()); // Get a random number that can't be bigger than the actual list of nodes
       Node chosen_node = NodeList.get(random_node_index); // Use this index to find a random node in that list
       int node_count = CountNodes(chosen_node); // Return an integer of nodes that have a path to this node
-      System.out.println("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nTraversing the graph starting at node %s. We should find every node created, because they all have at least one shared path to one-another.");
+      System.out.println("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nTraversing the graph starting at node %s. We should find every node created, because\n they all have at least one shared path to one-another.");
       if (node_count > 1) { // About half of them should contain more than one node in the graph form that root node.
       System.out.println(String.format("\n____________________________________________________\n\n%s is in a network with %d nodes", chosen_node, CountNodes(chosen_node)));
       }
       else {
-    	  System.out.println(String.format("\n_____________________________\n\n%s is a singleton node! It is by itself.", chosen_node));
+    	  System.out.println(String.format("\n_____________________________\n\n%s is a leaf node! It is by itself.", chosen_node));
     	  }
       }
   }
