@@ -109,7 +109,7 @@ class NodeGraph {
 
   private static ArrayList<Node> RandomNodeList() {
     ArrayList<Node> NodeList = new ArrayList<Node>(); // Create a new list containing our custom Node Object type
-    int iterations = RandomInt(50); // Get new random integer to iterate through
+    int iterations = RandomInt(100); // Get new random integer to iterate through
     int i; // create iteration value to loop with
     for (i=0; i<iterations; i++) {
       Node newNode = new Node(); // Get new instance of our custom node class
