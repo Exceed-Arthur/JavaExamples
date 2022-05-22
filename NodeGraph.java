@@ -1,6 +1,4 @@
-
 import java.util.*;
-
 import java.util.Arrays;
 
 class NodeGraph {
@@ -49,7 +47,6 @@ class NodeGraph {
   }
   
   private static int CountNodes(Node head) {
-	  
       Queue<Node> queue = new LinkedList<>();  // First in, last out data structure to keep track of nodes in correct order
       queue.add(head); // Root node is now first value to be scanned (Breadth First)
       int counter = 0; // Increase this value by one each time we encounter a new node
@@ -73,7 +70,6 @@ class NodeGraph {
           counter++;
           already_added.add(currentNode);
         }
-
       }
       return counter++;
   }
