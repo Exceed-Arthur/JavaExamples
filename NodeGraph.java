@@ -53,6 +53,7 @@ class NodeGraph {
       List<Node> already_added = new ArrayList<>(); // We must check if a node has already been scanned before scanning again (NO CYCLES)
       while (queue.size() > 0) { // Stop this loop once we finish scanning all of our nodes
         Node currentNode = queue.peek(); // Get first value (Last added)
+        System.out.println("Current Node in queue is: " + currentNode);
         queue.remove(); // Take it out of queue so we don't scan it twice
         if (!already_added.contains(currentNode) && currentNode.adjacent_nodes.size() > 0) { // Overkill but ensures we don't scan more than once
           // System.out.println(currentNode); // Identify current Node being scanned
@@ -104,11 +105,13 @@ class NodeGraph {
   }
 
   private static ArrayList<Node> RandomNodeList() {
+    System.out.println("Creating a list of random nodes to aribitrarily connect with each other. We will traverse the list using a queue system after we pick a random node. We will NOT use this list to simulate traversal.");
     ArrayList<Node> NodeList = new ArrayList<Node>(); // Create a new list containing our custom Node Object type
     int iterations = RandomInt(100); // Get new random integer to iterate through
     int i; // create iteration value to loop with
     for (i=0; i<iterations; i++) {
       Node newNode = new Node(); // Get new instance of our custom node class
+      System.out.println("Succesfully created Node: " + newNode);
       NodeList.add(newNode); // Add it to our list of saved nodes
     }
     return NodeList;
