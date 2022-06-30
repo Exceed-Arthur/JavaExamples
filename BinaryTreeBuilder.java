@@ -6,7 +6,17 @@ import java.util.*;
 
 
 public class BinaryTreeBuilder {
-    
+    private static String getSpatialModifier(int row) {
+        String OriginalString = "";
+        int space_count = 64;
+        for (int r = 0; r < row; r++) {
+            space_count -= Math.pow(3.1, r+1);    
+        }
+        for (int s=0; s < space_count; s++) {
+            OriginalString += " ";
+        }
+        return OriginalString;
+    }
     private static int getRowNodeCount(int row) {
         //System.out.println("Row Count at row "+ String.valueOf(row) + " is " + String.valueOf((int) Math.pow(2, row)));
         return (int) Math.pow(2, row);
@@ -72,11 +82,70 @@ public class BinaryTreeBuilder {
             }
         }
         ArrayList<ArrayList<Node>> FullNodes = EmptyNodes;
+        ArrayList<String> RowStrings = new ArrayList<String>();
+        String Space = " ";
+        String  firstTreeString = ""; 
+        for (int i=0; i < FullNodes.size(); i++) {
+            //System.out.println("Row Size: " + String.valueOf(FullNodes.get(i).size()));
+            print("");
+            String RowString = "";
+            RowString += getSpatialModifier(i);
+            for (int j=0; j < FullNodes.get(i).size(); j++) {
+                RowString += FullNodes.get(i).get(j).toString();
+                if (j < FullNodes.get(i).size()-1) {
+                    RowString += " - ";
+                }
+
+            }
+            RowStrings.add(RowString);
+            firstTreeString += RowString + "\n";
+            print(RowString);
+        }
+        
         return FullNodes;
     }
+    
+    public static int scanTreeCount(Node head) {
+        Queue<Node> node_queue = new LinkedList<>();
+        node_queue.add(head);
+        int nodeCount = 0;
+        while (node_queue.size() > 0) {
+            Node current = node_queue.remove();
+            nodeCount++;
+            node_queue.add(current.left);
+            node_queue.add(current.right);
+        }
+        return nodeCount;
+    }
+    
+    public static ArrayList<Node> scanTreeNodes(Node head) {
+        Queue<Node> node_queue = new LinkedList<>();
+        ArrayList<Node> node_array = new ArrayList<Node>();
+        node_queue.add(head); // Initialize the Queue to scan subNodes
+        while (node_queue.size() > 0) {
+            Node current = node_queue.remove();
+            node_array.add(current); // Add the head node to the array we return
+            node_queue.add(current.left); // Ensure All subNodes are added
+            node_queue.add(current.right);
+        }
+        return node_array;
+    }
+    
+    public static int scanTreeRowCount(Node head) {
+        int totalNodes = scanTreeCount(head);
+        int accumulator = 0;
+        int rowCount = 0;
+        while (accumulator < totalNodes) {
+            accumulator += Math.pow(2, rowCount);
+            rowCount++;
+        }
+        return rowCount;
+    }
+    
 
 
     public static void main(String[] args) {
-        createNodes(4);
+        createNodes(3);
     }
+    
 }
